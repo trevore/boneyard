@@ -22,7 +22,9 @@ TIME=$(/bin/date +%s)
 
 # Backup files to ~/.backup before you clobber them
 safe_copy() {
-  cp -p ~/$@ ~/.backup/$@-$TIME
+  if [ -f ~/$@ ]; then 
+    cp -p ~/$@ ~/.backup/$@-$TIME
+  fi
   cp -v skel/$@ ~
 }
 
