@@ -11,19 +11,7 @@ if [ -f /etc/bashrc ]; then
 fi
 
 # Setup prompt
-function exitstatus {
-
-    EXITSTATUS="$?"
-
-    if [ "${EXITSTATUS}" -eq 0 ]
-    then
-       PS1="\[\e[32;1m\](\[\e[37;1m\]\u@\h\[\e[32;1m\])-(\[\e[37;1m\]jobs:\j\[\e[32;1m\])-(\[\e[37;1m\]\w\[\e[32;1m\])\n(\[\e[37;1m\]! \!\[\e[32;1m\])-> \[\e[0m\]"
-    else
-       PS1="\[\e[32;1m\](\[\e[31;1m\]exit:$?\[\e[32;1m\])-(\[\e[37;1m\]\u@\h\[\e[32;1m\])-(\[\e[37;1m\]jobs:\j\[\e[32;1m\])-(\[\e[37;1m\]\w\[\e[32;1m\])\n(\[\e[37;1m\]! \!\[\e[32;1m\])-> \[\e[0m\]"
-    fi
-
-}
-PROMPT_COMMAND=exitstatus
+PS1="\[\e[32;1m\](\[\e[37;1m\]\u@\h\[\e[32;1m\])-(\[\e[37;1m\]jobs:\j\[\e[32;1m\])-(\[\e[37;1m\]\w\[\e[32;1m\])\n(\[\e[37;1m\]! \!\[\e[32;1m\])-> \[\e[0m\]"
 
 # Forward X and use ssh Agent
 alias ssh='ssh -X -A'
