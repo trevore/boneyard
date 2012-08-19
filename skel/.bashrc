@@ -1,5 +1,15 @@
 # .bashrc
 
+# This crap is for the U of A
+if [ -f /home/skel/bash/bashrc ]; then
+source /home/skel/bash/bashrc
+fi
+
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+	. /etc/bashrc
+fi
+
 # Setup prompt
 function exitstatus {
 
@@ -14,17 +24,6 @@ function exitstatus {
 
 }
 PROMPT_COMMAND=exitstatus
-
-
-# This crap is for the U of A
-if [ -f /home/skel/bash/bashrc ]; then
-source /home/skel/bash/bashrc
-fi
-
-# Source global definitions
-if [ -f /etc/bashrc ]; then
-	. /etc/bashrc
-fi
 
 # Forward X and use ssh Agent
 alias ssh='ssh -X -A'
