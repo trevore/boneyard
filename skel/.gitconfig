@@ -1,0 +1,7 @@
+[user]
+	name = Trevor Ellermann
+	email = trevor@ellermann.net
+[credential]
+	helper = cache
+[github]
+	user = trevore
