@@ -11,7 +11,7 @@ if [ -f /etc/bashrc ]; then
 fi
 
 # Forward X and use ssh Agent
-alias ssh='ssh -X - A'
+alias ssh='ssh -X -A'
 
 # Set editor to vim
 export EDITOR=vim
