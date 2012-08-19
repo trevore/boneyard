@@ -1,5 +1,21 @@
 # .bashrc
 
+# Setup prompt
+function exitstatus {
+
+    EXITSTATUS="$?"
+
+    if [ "${EXITSTATUS}" -eq 0 ]
+    then
+       PS1="\[\e[32;1m\](\[\e[37;1m\]\u@\h\[\e[32;1m\])-(\[\e[37;1m\]jobs:\j\[\e[32;1m\])-(\[\e[37;1m\]\w\[\e[32;1m\])\n(\[\e[37;1m\]! \!\[\e[32;1m\])-> \[\e[0m\]"
+    else
+       PS1="\[\e[32;1m\](\[\e[31;1m\]exit:$?\[\e[32;1m\])-(\[\e[37;1m\]\u@\h\[\e[32;1m\])-(\[\e[37;1m\]jobs:\j\[\e[32;1m\])-(\[\e[37;1m\]\w\[\e[32;1m\])\n(\[\e[37;1m\]! \!\[\e[32;1m\])-> \[\e[0m\]"
+    fi
+
+}
+PROMPT_COMMAND=exitstatus
+
+
 # This crap is for the U of A
 if [ -f /home/skel/bash/bashrc ]; then
 source /home/skel/bash/bashrc
