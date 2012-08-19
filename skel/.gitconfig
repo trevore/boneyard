@@ -5,3 +5,7 @@
 	helper = cache
 [github]
 	user = trevore
+[branch]
+	autosetuprebase = always
+[branch "master"]
+	rebase = true

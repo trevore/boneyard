@@ -1,21 +1,28 @@
+" Big history
 set history=700
 
+" Keep those annoying backup and tmp files in .vim
 set backup
 set backupdir=~/.vim/backup
 set directory=~/.vim/tmp
 
+" Highlight the line the cursor is on
 set cul
+
+" Automatically re-read a file when it is changes outside vim
 set autoread
 
+" Display the wildmenu
 set wildmenu
 "set wildmode=list:longest,full
 
+" Enable mouse in vim command line, stops middle button paste from working
 "set mouse=a
 
+" Show (partial) command in the last line of the screen.
 set showcmd
 
-" This is totally awesome - remap jj to escape in insert mode.  You'll never
-" type jj anyway, so it's great!
+" Remap jj to escape in insert mode.
 inoremap jj <Esc>
 nnoremap JJJJ <Nop>
 
@@ -25,9 +32,12 @@ set incsearch
 " Highlight things that we find with the search
 set hlsearch
 
+" Syntax highlighting
 filetype on
 filetype plugin on
 syntax enable
+
+" Enable autoindent
 set autoindent
 
 " Line Numbers PWN!
@@ -39,11 +49,13 @@ set ignorecase
 " And so is Artificial Intellegence!
 set smartcase
 
+" Set spellcheck language to english but turn it off
 if version >= 700
    set spl=en spell
    set nospell
 endif
 
+" The status line at the bottom of the screen
 set laststatus=2
 set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
 
@@ -54,6 +66,7 @@ function! HasPaste()
     return ''
 endfunction
 
+" Set chlorscheme to elflord in gvim
 if has('gui_running')
   set guioptions-=T  " no toolbar
   colorscheme elflord
