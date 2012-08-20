@@ -38,7 +38,7 @@ filetype plugin on
 syntax enable
 
 " Enable autoindent
-set autoindent
+" set autoindent
 
 " Line Numbers PWN!
 " set number
