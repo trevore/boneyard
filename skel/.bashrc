@@ -11,7 +11,9 @@ if [ -f /etc/bashrc ]; then
 fi
 
 # Setup prompt
-PS1="\[\e[32;1m\](\[\e[37;1m\]\u@\h\[\e[32;1m\])-(\[\e[37;1m\]jobs:\j\[\e[32;1m\])-(\[\e[37;1m\]\w\[\e[32;1m\])\n(\[\e[37;1m\]! \!\[\e[32;1m\])-> \[\e[0m\]"
+PS1="\[\e[32;1m\](\[\e[37;1m\]\!\[\e[32;1m\]) \[\e[32;1m\][\[\e[37;1m\]\u@\h \w\[\e[32;1m\]]$ \[\e[0m\]"
+# Fancy prompt
+#PS1="\[\e[32;1m\](\[\e[37;1m\]\u@\h\[\e[32;1m\])-(\[\e[37;1m\]jobs:\j\[\e[32;1m\])-(\[\e[37;1m\]\w\[\e[32;1m\])\n(\[\e[37;1m\]! \!\[\e[32;1m\])-> \[\e[0m\]"
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
@@ -33,3 +35,6 @@ export HISTIGNORE="&:ls:ll"
 export HISTCONTROL=ignoredups
 export HISTSIZE=5000
 export HISTFILESIZE=5000
+
+# Get rid of annoying command not found delay
+unset command_not_found_handle
