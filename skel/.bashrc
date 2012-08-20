@@ -13,6 +13,15 @@ fi
 # Setup prompt
 PS1="\[\e[32;1m\](\[\e[37;1m\]\u@\h\[\e[32;1m\])-(\[\e[37;1m\]jobs:\j\[\e[32;1m\])-(\[\e[37;1m\]\w\[\e[32;1m\])\n(\[\e[37;1m\]! \!\[\e[32;1m\])-> \[\e[0m\]"
 
+# If this is an xterm set the title to user@host:dir
+case "$TERM" in
+xterm*|rxvt*)
+    PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME}: ${PWD}\007"'
+    ;;
+*)
+    ;;
+    esac         
+
 # Forward X and use ssh Agent
 alias ssh='ssh -X -A'
 
@@ -24,6 +33,3 @@ export HISTIGNORE="&:ls:ll"
 export HISTCONTROL=ignoredups
 export HISTSIZE=5000
 export HISTFILESIZE=5000
-
-# Display the current load on login
-uptime
