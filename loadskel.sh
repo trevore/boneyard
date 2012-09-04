@@ -51,3 +51,6 @@ safe_copy ".forward"
 safe_copy ".gitconfig"
 safe_copy ".vimrc"
 safe_copy ".ssh/authorized_keys"
+
+# Reload the .bashrc
+source ~/.bashrc

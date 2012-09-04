@@ -32,6 +32,8 @@ alias ssh='ssh -X -A'
 
 # command to update rc files
 alias boneup='(cd ~/git/boneyard ; git pull ; ~/git/boneyard/loadskel.sh)'            
+# Get some color in ls
+alias ls='ls --color=auto'
 
 # Set editor to vim
 export EDITOR=vim
