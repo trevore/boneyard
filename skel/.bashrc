@@ -30,6 +30,9 @@ xterm*|rxvt*)
 # Forward X and use ssh Agent
 alias ssh='ssh -X -A'
 
+# command to update rc files
+alias boneup='(cd ~/git/boneyard ; git pull ; ~/git/boneyard/loadskel.sh)'            
+
 # Set editor to vim
 export EDITOR=vim
 

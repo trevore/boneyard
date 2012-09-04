@@ -34,7 +34,7 @@ safe_copy() {
   if [ -f ~/$@ ]; then 
     cp -p ~/$@ ~/.backup/$@-$TIME
   fi
-  cp -v skel/$@ ~/$@
+  cp -v ~/git/boneyard/skel/$@ ~/$@
 }
 
 safe_copy ".bash_logout"
