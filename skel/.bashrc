@@ -11,9 +11,12 @@ if [ -f /etc/bashrc ]; then
 fi
 
 # Setup prompt
-PS1="\[\e[32;1m\](\[\e[37;1m\]\!\[\e[32;1m\])\[\e[32;1m\][\[\e[37;1m\]\u@\h \w\[\e[32;1m\]]$ \[\e[0m\]"
-# Fancy prompt
-#PS1="\[\e[32;1m\](\[\e[37;1m\]\u@\h\[\e[32;1m\])-(\[\e[37;1m\]jobs:\j\[\e[32;1m\])-(\[\e[37;1m\]\w\[\e[32;1m\])\n(\[\e[37;1m\]! \!\[\e[32;1m\])-> \[\e[0m\]"
+PS1='\[\e[32;1m\](\[\e[37;1m\]\!\[\e[32;1m\])[\[\e[37;1m\]\u@\h \w\[\e[32;1m\]]\$ \[\e[0m\]'
+
+# Different prompt for root make text red
+if [ "$(id -u)" = "0" ]; then
+  PS1='\[\e[32;1m\](\[\e[37;1m\]\!\[\e[32;1m\])[\[\e[0;31m\]\u@\h \w\[\e[32;1m\]]\$ \[\e[0m\]'
+fi
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
