@@ -11,11 +11,11 @@ if [ -f /etc/bashrc ]; then
 fi
 
 # Setup prompt
-PS1='\[\e[1;32m\](\[\e[0;37m\]\!\[\e[1;32m\])[\[\e[1;37m\]\u@\[\e[1;34m\]\h \[\e[0;37m\]\w\[\e[1;32m\]]\$ \[\e[0m\]'
+PS1='\[\e[1;32m\](\[\e[0;37m\]\!\[\e[1;32m\])\[\e[1;37m\]\u@\[\e[1;34m\]\h\[\e[0;37m\]:\w\[\e[1;32m\]\$ \[\e[0m\]'
 
 # Different prompt for root make text red
 if [ "$(id -u)" = "0" ]; then
-  PS1='\[\e[1;32m\](\[\e[0;37m\]\!\[\e[1;32m\])[\[\e[0;31m\]\u@\[\e[1;34m\]\h \[\e[0;37m\]\w\[\e[1;32m\]]\$ \[\e[0m\]'
+  PS1='\[\e[1;32m\](\[\e[0;37m\]\!\[\e[1;32m\])\[\e[0;31m\]\u\[\e[1;37m\]@\[\e[1;34m\]\h\[\e[0;37m\]:\w\[\e[1;32m\]\$ \[\e[0m\]'
 fi
 
 # If this is an xterm set the title to user@host:dir
@@ -34,6 +34,9 @@ alias ssh='ssh -X -A'
 alias boneup='(cd ~/git/boneyard ; git pull ; ~/git/boneyard/loadskel.sh)'            
 # Get some color in ls
 alias ls='ls --color=auto'
+
+# Give root same enviroment unless - is passed
+alias su='su -m'
 
 # Set editor to vim
 export EDITOR=vim
