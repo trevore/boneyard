@@ -25,6 +25,9 @@ set expandtab
 set tabstop=4
 set shiftwidth=4
 
+" If loading a python file, setup smart indent
+autocmd BufRead *.py set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
+
 " Show (partial) command in the last line of the screen.
 set showcmd
 
