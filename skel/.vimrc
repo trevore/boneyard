@@ -19,6 +19,12 @@ set wildmenu
 " Enable mouse in vim command line, stops middle button paste from working
 "set mouse=a
 
+" If I am going to code python I might as well setup tab correctly
+" Tabs should be 4 spaces
+set expandtab
+set tabstop=4
+set shiftwidth=4
+
 " Show (partial) command in the last line of the screen.
 set showcmd
 
