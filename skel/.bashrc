@@ -30,6 +30,9 @@ xterm*|rxvt*)
   ;;
   esac         
 
+# GPG is PGP
+alias pgp='gpg' 
+
 # Forward X and use ssh Agent
 alias ssh='ssh -X -A'
 
