@@ -40,8 +40,18 @@ safe_copy() {
     cp -p ~/$@ ~/.backup/$@-$TIME
   fi
   cp -v ~/git/boneyard/skel/$@ ~/$@
-  chmod 644 ~/$@
+  chmod 600 ~/$@
 }
+
+# Same as safe_copy for scripts
+script_copy() {
+  if [ -f ~/bin/$@ ]; then 
+    cp -p ~/bin/$@ ~/.backup/$@-$TIME
+  fi
+  cp -v ~/git/boneyard/scripts/$@ ~/bin/$@
+  chmod 700 ~/bin/$@
+}
+
 
 # Files to copy from skel
 safe_copy ".bash_logout"
@@ -52,6 +62,7 @@ safe_copy ".gitconfig"
 safe_copy ".vimrc"
 safe_copy ".screenrc"
 safe_copy ".ssh/authorized_keys"
+script_copy "keysign"
 
 # Reload the .bashrc
 source ~/.bashrc
