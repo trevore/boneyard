@@ -33,6 +33,9 @@ xterm*|rxvt*)
 # GPG is PGP
 alias pgp='gpg' 
 
+# Pine is Alpine, I guess I'm just old school.
+alias pine='alpine'
+
 # Forward X and use ssh Agent
 alias ssh='ssh -X -A'
 
