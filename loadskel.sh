@@ -13,6 +13,10 @@ if [ ! -d ~/.backup/.ssh ]; then
     mkdir ~/.backup/.ssh
 fi
 
+if [ ! -d ~/.backup/.gnupg ]; then
+    mkdir ~/.backup/.gnupg
+fi
+
 # make .vim .vim/backup and .vim/tmp if they don't exist
 if [ ! -d ~/.vim ]; then
     mkdir ~/.vim
@@ -31,6 +35,11 @@ if [ ! -d ~/.ssh ]; then
     mkdir ~/.ssh
 fi
 chmod 700 ~/.ssh
+
+if [ ! -d ~/.gnupg ]; then
+    mkdir ~/.gnupg
+fi
+chmod 700 ~/.gnupg
 
 TIME=$(/bin/date +%s)
 
@@ -62,6 +71,7 @@ safe_copy ".gitconfig"
 safe_copy ".vimrc"
 safe_copy ".screenrc"
 safe_copy ".ssh/authorized_keys"
+safe_copy ".gnupg/gpg.conf"
 script_copy "keysign"
 
 # Reload the .bashrc
