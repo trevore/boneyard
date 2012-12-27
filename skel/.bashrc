@@ -36,6 +36,9 @@ alias pgp='gpg'
 # Pine is Alpine, I guess I'm just old school.
 alias pine='alpine'
 
+# Display process name with PID for pgrep
+alias pgrep='pgrep -l'
+
 # Forward X and use ssh Agent
 alias ssh='ssh -X -A'
 
