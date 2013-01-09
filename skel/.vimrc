@@ -27,6 +27,7 @@ set shiftwidth=4
 
 " If loading a python file, setup smart indent
 autocmd BufRead *.py set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
+autocmd BufRead *.py set textwidth=79
 
 " Show (partial) command in the last line of the screen.
 set showcmd
