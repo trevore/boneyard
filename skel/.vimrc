@@ -56,10 +56,10 @@ syntax enable
 " Ignoring case is a fun trick
 set ignorecase
 
-" And so is Artificial Intellegence!
+" And so is Artificial Intelligence!
 set smartcase
 
-" Set spellcheck language to english but turn it off
+" Set spellcheck language to English but turn it off
 if version >= 700
    set spl=en spell
    set nospell
@@ -67,14 +67,25 @@ endif
 
 " The status line at the bottom of the screen
 set laststatus=2
-set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
+set statusline=
+set statusline +=\ %n\ %*            "buffer number
+set statusline +=%{&ff}%*            "file format
+set statusline +=%y%*                "file type
+set statusline +=\ %<%F%*            "full path
+set statusline +=%m%*                "modified flag
+set statusline +=%=%5l%*             "current line                           
+set statusline +=/%L%*               "total lines
+set statusline +=%4v\ %*             "virtual column number 
+set statusline +=0x%04B\ %*          "character under cursor
 
-function! HasPaste()
-    if &paste
-        return 'PASTE MODE  '
-    en
-    return ''
-endfunction
+" The old statusline I used to use
+" set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
+" function! HasPaste()
+"     if &paste
+"         return 'PASTE MODE  '
+"     en
+"     return ''
+" endfunction
 
 " Set chlorscheme to elflord in gvim
 if has('gui_running')
