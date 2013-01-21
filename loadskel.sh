@@ -3,6 +3,26 @@
 # Make sure the home dir permissions are restrictive
 chmod 700 ~
 
+# Why don't I have a function to create directories?
+
+# Binz!
+if [ ! -d ~/bin ]; then
+    mkdir ~/bin
+fi
+chmod 700 ~/bin
+
+# make .config
+if [ ! -d ~/.config ]; then
+    mkdir ~/.config
+fi
+chmod 700 ~/.config
+
+# htop in .config
+if [ ! -d ~/.config/htop ]; then
+    mkdir ~/.config/htop
+fi
+chmod 700 ~/.config/htop
+
 # make .backup to preserve existing skel files
 if [ ! -d ~/.backup ]; then
     mkdir ~/.backup
@@ -15,6 +35,14 @@ fi
 
 if [ ! -d ~/.backup/.gnupg ]; then
     mkdir ~/.backup/.gnupg
+fi
+
+if [ ! -d ~/.backup/.config ]; then
+    mkdir ~/.backup/.config
+fi
+
+if [ ! -d ~/.backup/.config/htop ]; then
+    mkdir ~/.backup/.config/htop
 fi
 
 # make .vim .vim/backup and .vim/tmp if they don't exist
@@ -73,6 +101,7 @@ safe_copy ".screenrc"
 safe_copy ".pinerc"
 safe_copy ".ssh/authorized_keys"
 safe_copy ".gnupg/gpg.conf"
+safe_copy ".config/htop/htoprc"
 script_copy "keysign"
 
 # Reload the .bashrc
