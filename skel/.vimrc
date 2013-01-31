@@ -92,3 +92,7 @@ if has('gui_running')
   set guioptions-=T  " no toolbar
   colorscheme elflord
 endif
+
+" Folding options
+set foldmethod=indent
+set foldlevel=99
