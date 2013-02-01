@@ -95,4 +95,6 @@ endif
 
 " Folding options
 set foldmethod=indent
-set foldlevel=99
+set foldlevel=2
+au BufWinLeave * silent! mkview
+au BufWinEnter * silent! loadview
