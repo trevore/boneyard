@@ -3,71 +3,30 @@
 # Make sure the home dir permissions are restrictive
 chmod 700 ~
 
-# Why don't I have a function to create directories?
+# Function to create directories if they do not exist
+# $1 is the location of the directory under ~/
+safe_mkdir() {
+    if [ ! -d ~/$1 ]; then
+        mkdir ~/$1
+    fi
+    chmod 700 ~/$1
+}
 
-# Binz!
-if [ ! -d ~/bin ]; then
-    mkdir ~/bin
-fi
-chmod 700 ~/bin
+safe_mkdir "bin"
+safe_mkdir ".config"
+safe_mkdir ".config/htop"
+safe_mkdir ".vim"
+safe_mkdir ".vim/backup"
+safe_mkdir ".vim/tmp"
+safe_mkdir ".ssh"
+safe_mkdir ".gnupg"
 
-# make .config
-if [ ! -d ~/.config ]; then
-    mkdir ~/.config
-fi
-chmod 700 ~/.config
-
-# htop in .config
-if [ ! -d ~/.config/htop ]; then
-    mkdir ~/.config/htop
-fi
-chmod 700 ~/.config/htop
-
-# make .backup to preserve existing skel files
-if [ ! -d ~/.backup ]; then
-    mkdir ~/.backup
-fi
-chmod 700 ~/.backup
-
-if [ ! -d ~/.backup/.ssh ]; then
-    mkdir ~/.backup/.ssh
-fi
-
-if [ ! -d ~/.backup/.gnupg ]; then
-    mkdir ~/.backup/.gnupg
-fi
-
-if [ ! -d ~/.backup/.config ]; then
-    mkdir ~/.backup/.config
-fi
-
-if [ ! -d ~/.backup/.config/htop ]; then
-    mkdir ~/.backup/.config/htop
-fi
-
-# make .vim .vim/backup and .vim/tmp if they don't exist
-if [ ! -d ~/.vim ]; then
-    mkdir ~/.vim
-fi
-chmod 700 ~/.vim
-
-if [ ! -d ~/.vim/backup ]; then
-    mkdir ~/.vim/backup
-fi
-
-if [ ! -d ~/.vim/tmp ]; then
-    mkdir ~/.vim/tmp
-fi
-
-if [ ! -d ~/.ssh ]; then
-    mkdir ~/.ssh
-fi
-chmod 700 ~/.ssh
-
-if [ ! -d ~/.gnupg ]; then
-    mkdir ~/.gnupg
-fi
-chmod 700 ~/.gnupg
+# Make the backup directory for running the safe copies
+safe_mkdir ".backup"
+safe_mkdir ".backup/.ssh"
+safe_mkdir ".backup/.gnupg"
+safe_mkdir ".backup/.config"
+safe_mkdir ".backup/.config/htop"
 
 TIME=$(/bin/date +%s)
 
