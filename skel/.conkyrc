@@ -24,7 +24,7 @@
 #
 # This config file is hacked out of one from Isis Lovecruft's
 
-alignment top_right
+alignment top_left
 background no
 border_width 1
 cpu_avg_samples 2
