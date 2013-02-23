@@ -1,3 +1,8 @@
+" Enable 256 Colors
+if $TERM == "xterm-256color" || $TERM == "screen-256color" || $COLORTERM == "gnome-terminal"
+  set t_Co=256
+endif
+
 " Big history
 set history=700
 
@@ -94,7 +99,14 @@ if has('gui_running')
 endif
 
 " Folding options
-set foldmethod=indent
-set foldlevel=2
-au BufWinLeave * silent! mkview
-au BufWinEnter * silent! loadview
+" set foldmethod=indent
+" set foldlevel=2
+" au BufWinLeave * silent! mkview
+" au BufWinEnter * silent! loadview
+
+" map \l to toggle line numbers
+nmap \l :setlocal number!<CR>
+
+" Run Pathogen
+call pathogen#infect()
+call pathogen#helptags()
