@@ -18,6 +18,8 @@ safe_mkdir ".config/htop"
 safe_mkdir ".vim"
 safe_mkdir ".vim/backup"
 safe_mkdir ".vim/tmp"
+safe_mkdir ".vim/autoload"
+safe_mkdir ".vim/bundle"
 safe_mkdir ".ssh"
 safe_mkdir ".gnupg"
 
@@ -62,6 +64,7 @@ safe_copy ".pinerc"
 safe_copy ".ssh/authorized_keys"
 safe_copy ".gnupg/gpg.conf"
 safe_copy ".config/htop/htoprc"
+safe_copy ".vim/autoload/pathogen.vim"
 script_copy "keysign"
 
 # Reload the .bashrc
