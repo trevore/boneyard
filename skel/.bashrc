@@ -42,9 +42,6 @@ alias pine='alpine'
 # Display process name with PID for pgrep
 alias pgrep='pgrep -l'
 
-# Forward X and use ssh Agent
-alias ssh='ssh -X -A'
-
 # command to update rc files
 alias boneup='(cd ~/git/boneyard ; git pull ; ~/git/boneyard/loadskel.sh)'            
 # Get some color in ls
