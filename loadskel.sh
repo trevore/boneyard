@@ -71,4 +71,9 @@ script_copy "keysign"
 source ~/.bashrc
 
 # Add powerline to vim
-cd ~/.vim/bundle && git clone git://github.com/Lokaltog/vim-powerline.git
+if [ ! -d ~/.vim/bundle/vim-powerline ]; then
+    cd ~/.vim/bundle && git clone git://github.com/Lokaltog/vim-powerline.git
+else
+    cd ~/.vim/bundle/vim-powerline && git pull
+fi
+
