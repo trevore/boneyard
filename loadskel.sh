@@ -69,3 +69,7 @@ script_copy "keysign"
 
 # Reload the .bashrc
 source ~/.bashrc
+
+# Add powerline to vim
+git --exec-path=~/.vim/bundle clone git://github.com/Lokaltog/vim-powerline.git
+
