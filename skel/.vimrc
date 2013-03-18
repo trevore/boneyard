@@ -107,6 +107,9 @@ endif
 " map \l to toggle line numbers
 nmap \l :setlocal number!<CR>
 
+"Use F2 to toggle paste mode
+set pastetoggle=<F2>
+
 " Run Pathogen
 call pathogen#infect()
 call pathogen#helptags()

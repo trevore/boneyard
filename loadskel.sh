@@ -8,6 +8,7 @@ chmod 700 ~
 safe_mkdir() {
     if [ ! -d ~/$1 ]; then
         mkdir ~/$1
+        mkdir ~/.backup/$1
     fi
     chmod 700 ~/$1
 }
@@ -24,11 +25,11 @@ safe_mkdir ".ssh"
 safe_mkdir ".gnupg"
 
 # Make the backup directory for running the safe copies
-safe_mkdir ".backup"
-safe_mkdir ".backup/.ssh"
-safe_mkdir ".backup/.gnupg"
-safe_mkdir ".backup/.config"
-safe_mkdir ".backup/.config/htop"
+#safe_mkdir ".backup"
+#safe_mkdir ".backup/.ssh"
+#safe_mkdir ".backup/.gnupg"
+#safe_mkdir ".backup/.config"
+#safe_mkdir ".backup/.config/htop"
 
 TIME=$(/bin/date +%s)
 
