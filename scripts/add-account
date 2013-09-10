@@ -1,0 +1,20 @@
+#!/bin/bash
+# Simple script to add all the accounts we need
+# It will check to make sure a user does not exist before trying to add it
+
+user_add() {
+    getent passwd $@ > /dev/null
+
+    if [ $? -eq 0 ]; then
+        echo "User already exists $@"
+    else
+        echo "Adding user $@"
+        useradd -m -p "SnarGleP0p$" -G sudo -s /bin/bash $@
+        mkdir /home/$@/.ssh
+        cp $@.key /home/$@/.ssh/authorized_keys
+        chown -R $@.$@ /home/$@/.ssh
+        chmod -R 700 /home/$@/.ssh
+    fi
+}
+
+user_add $1
