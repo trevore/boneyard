@@ -69,6 +69,7 @@ safe_copy ".gnupg/gpg.conf"
 safe_copy ".config/htop/htoprc"
 safe_copy ".vim/autoload/pathogen.vim"
 script_copy "keysign"
+script_copy "add-account"
 
 # Reload the .bashrc
 source ~/.bashrc
