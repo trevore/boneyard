@@ -37,10 +37,6 @@ autocmd BufRead *.py set textwidth=79
 " Show (partial) command in the last line of the screen.
 set showcmd
 
-" Remap jj to escape in insert mode.
-inoremap jj <Esc>
-nnoremap JJJJ <Nop>
-
 " Incremental searching is sexy
 set incsearch
 
