@@ -80,3 +80,8 @@ unset command_not_found_handle
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 # lesspipe is lesspipe.sh on some distros
 [ -x /usr/bin/lesspipe.sh ] && eval "$(SHELL=/bin/sh lesspipe.sh)"
+
+# If there is a local bashrc run that next
+if [ -f ~/.bashrc.local ]; then
+  . ~/.bashrc.local
+fi

@@ -3,17 +3,22 @@
 # It will check to make sure a user does not exist before trying to add it
 
 user_add() {
-    getent passwd $@ > /dev/null
+    getent passwd $1 > /dev/null
 
     if [ $? -eq 0 ]; then
-        echo "User already exists $@"
+        echo "User already exists $1"
     else
-        echo "Adding user $@"
-        useradd -m -p "SnarGleP0p$" -G sudo -s /bin/bash $@
-        mkdir /home/$@/.ssh
-        cp $@.key /home/$@/.ssh/authorized_keys
-        chown -R $@.$@ /home/$@/.ssh
-        chmod -R 700 /home/$@/.ssh
+        echo "Adding user $1"
+        if [ $2 -eq "-s" ]; then
+            useradd -m -G sudo -s /bin/bash $1
+        else
+            useradd -m -s /bin/bash $1
+        fi
+        mkdir /home/$1/.ssh
+        cp $1.key /home/$1/.ssh/authorized_keys
+        chown -R $1.$1 /home/$1/.ssh
+        chmod -R 700 /home/$1/.ssh
+        chmod 700 /home/$1
     fi
 }
 
