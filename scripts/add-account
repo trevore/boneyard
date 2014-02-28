@@ -8,10 +8,11 @@ user_add() {
     if [ $? -eq 0 ]; then
         echo "User already exists $1"
     else
-        echo "Adding user $1"
-        if [ $2 -eq "-s" ]; then
+        if [ "$2" = "-s" ]; then
+            echo "Adding user $1 with SUDO access"
             useradd -m -G sudo -s /bin/bash $1
         else
+            echo "Adding user $1"
             useradd -m -s /bin/bash $1
         fi
         mkdir /home/$1/.ssh
@@ -22,4 +23,4 @@ user_add() {
     fi
 }
 
-user_add $1
+user_add $1 $2
