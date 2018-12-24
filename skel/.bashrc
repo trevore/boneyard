@@ -31,7 +31,7 @@ xterm*|rxvt*)
   esac         
 
 # Use gnome-open for open
-alias open='gnome-open'
+alias open='xdg-open'
 
 # GPG is PGP
 alias pgp='gpg' 
