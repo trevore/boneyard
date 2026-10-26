@@ -30,7 +30,8 @@ export CLICOLOR=1
 # the brighter blue when "Use bright colors for bold text" is on
 export LSCOLORS=Exfxcxdxbxegedabagacad
 if command -v eza >/dev/null; then
-  alias ll='eza --icons --git -l --group-directories-first'
+  # Like ls -lah: eza sizes are human-readable by default (its -h means --header)
+  alias ll='eza --icons --git -la --group-directories-first'
   alias tree='eza --icons --tree'
 fi
 
