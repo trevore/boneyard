@@ -1,5 +1,5 @@
 #!/bin/bash
-# Set up this Mac: packages, shell config, starship, vim.
+# Set up this Mac: packages, shell config, starship, vim, iTerm2 profile, macOS settings.
 # Safe to re-run. A differing existing file is moved aside (*.bak.<time>) first,
 # except the files this script generates itself (see MARKER below).
 set -euo pipefail
@@ -91,6 +91,16 @@ install_file "$TMP" ~/.zshrc.mac
 install_file "$DIR/vimrc" ~/.vimrc
 mkdir -p ~/.vim/backup ~/.vim/tmp
 
+# iTerm2 picks up profiles in this folder automatically, including while it's running.
+# Plain copy, no backup: iTerm2 loads every file in the folder, so a backup there would
+# be a second profile with the same Guid. iTerm2 can't edit these, so there's nothing to keep.
+ITERM_PROFILES=~/Library/Application\ Support/iTerm2/DynamicProfiles
+mkdir -p "$ITERM_PROFILES"
+cp "$DIR/iterm2-profile.json" "$ITERM_PROFILES/boneyard.json"
+echo "installed $ITERM_PROFILES/boneyard.json"
+
+"$DIR/defaults.sh"
+
 # Load ~/.zshrc.mac from ~/.zshrc
 append_once '[ -r ~/.zshrc.mac ] && source ~/.zshrc.mac' ~/.zshrc
 
@@ -104,7 +114,8 @@ fi
 
 cat <<'EOF'
 
-Done. Two manual steps:
-  1. iTerm2 -> Settings -> Profiles -> Text -> Font: JetBrainsMono Nerd Font
+Done. Manual steps:
+  1. iTerm2 -> Settings -> Profiles -> select "Boneyard" -> Other Actions -> Set as Default
   2. Open a new terminal tab (or: source ~/.zshrc)
+  3. Log out and back in for the macOS settings (Dock, Finder, dark mode, scrolling)
 EOF
