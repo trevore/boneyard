@@ -1,0 +1,8 @@
+brew "starship"
+brew "eza"
+brew "mtr"
+brew "vim"
+brew "htop"
+brew "byobu"
+brew "kubernetes-cli"
+cask "font-jetbrains-mono-nerd-font"

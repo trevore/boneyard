@@ -1,0 +1,20 @@
+# Overrides merged into the nerd-font-symbols preset by install.sh. Tables only (no top-level keys).
+# The merge only adds keys: setting one the preset already sets (mostly symbol) makes a
+# duplicate key and an invalid config, so icons can't be changed here.
+
+[aws]
+format = '[$symbol($profile )(\($region\) )]($style)'
+
+[directory]
+truncation_length = 0
+truncate_to_repo = false
+
+[kubernetes]
+disabled = false
+format = '[$symbol$context( \($namespace\))]($style) '
+
+[status]
+disabled = false
+
+[sudo]
+disabled = false

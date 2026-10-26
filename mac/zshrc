@@ -1,0 +1,46 @@
+# install.sh installs this as ~/.zshrc.mac, which ~/.zshrc sources
+
+# -U drops duplicate PATH entries, e.g. after re-sourcing this file. It only applies
+# when assigning through the path array, not the PATH string, so use path=(...)
+typeset -U path
+path=(~/bin ~/.local/bin $path)
+
+# Tab completion. brew shellenv in ~/.zprofile normally puts Homebrew's completions on
+# fpath, but sudo strips FPATH from the environment (even with -E), so add them here too
+typeset -U fpath
+fpath=(${HOMEBREW_PREFIX:-/opt/homebrew}/share/zsh/site-functions $fpath)
+if (( EUID == 0 )); then
+  # sudo -s -E keeps HOME: keep root's completion cache out of it, and accept
+  # Homebrew's completion dirs even though they're owned by you, not root
+  autoload -Uz compinit && compinit -u -d /var/root/.zcompdump
+else
+  autoload -Uz compinit && compinit
+fi
+
+# Prompt
+command -v starship >/dev/null && eval "$(starship init zsh)"
+
+alias k=kubectl
+(( $+functions[_kubectl] )) && compdef k=kubectl  # skip if kubectl's completion isn't installed
+
+# Colorize ls (macOS BSD ls). eza gets its own aliases because its flags
+# differ from ls (e.g. -t takes a value), so ls itself is left alone.
+export CLICOLOR=1
+# Same as the default except directories are bold blue (Ex), which iTerm2 shows as
+# the brighter blue when "Use bright colors for bold text" is on
+export LSCOLORS=Exfxcxdxbxegedabagacad
+if command -v eza >/dev/null; then
+  # Like ls -lah: eza sizes are human-readable by default (its -h means --header)
+  alias ll='eza --icons --git -la --group-directories-first'
+  alias tree='eza --icons --tree'
+fi
+
+# History: keep a lot, write each command immediately, not shared live across tabs
+HISTFILE=~/.zsh_history
+(( EUID == 0 )) && HISTFILE=/var/root/.zsh_history  # same reason as compinit above
+HISTSIZE=100000
+SAVEHIST=100000
+setopt INC_APPEND_HISTORY
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_SPACE
+setopt EXTENDED_HISTORY
