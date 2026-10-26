@@ -1,4 +1,4 @@
-# Sourced from ~/.zshrc by install.sh
+# Copied to ~/.zshrc.mac and sourced from ~/.zshrc by install.sh
 
 # Prompt
 command -v starship >/dev/null && eval "$(starship init zsh)"

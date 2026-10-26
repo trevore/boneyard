@@ -1,6 +1,6 @@
 #!/bin/bash
 # Set up this Mac: packages, shell config, starship, vim.
-# Safe to re-run. Existing files are moved aside (*.bak) before being replaced.
+# Safe to re-run. Differing existing files are moved aside (*.bak.<time>) first.
 set -eu
 
 DIR="$(cd "$(dirname "$0")" && pwd)"
@@ -20,23 +20,26 @@ fi
 
 brew bundle --file="$DIR/Brewfile"
 
-# Symlink $1 (file in this repo) to $2, backing up anything already there
-link() {
+# Copy $1 (file in this repo) to $2. A different existing file is backed up first.
+install_file() {
   mkdir -p "$(dirname "$2")"
-  if [ -e "$2" ] && [ ! -L "$2" ]; then
+  [ -L "$2" ] && rm "$2"  # never write through a symlink (e.g. into the repo)
+  if [ -e "$2" ] && ! cmp -s "$1" "$2"; then
     mv "$2" "$2.bak.$(date +%s)"
     echo "backed up $2 -> $2.bak.*"
   fi
-  ln -sfn "$1" "$2"
-  echo "linked $2"
+  cp "$1" "$2"
+  echo "installed $2"
 }
 
-link "$DIR/starship.toml" ~/.config/starship.toml
-link "$DIR/vimrc" ~/.vimrc
+install_file "$DIR/starship.toml" ~/.config/starship.toml
+install_file "$DIR/vimrc" ~/.vimrc
+install_file "$DIR/zshrc" ~/.zshrc.mac
 mkdir -p ~/.vim/backup ~/.vim/tmp
 
-# Pull our zshrc into ~/.zshrc (once)
-LINE="[ -r \"$DIR/zshrc\" ] && source \"$DIR/zshrc\""
+# Load ~/.zshrc.mac from ~/.zshrc (once)
+# shellcheck disable=SC2016  # literal line to write to ~/.zshrc
+LINE='[ -r ~/.zshrc.mac ] && source ~/.zshrc.mac'
 grep -qxF "$LINE" ~/.zshrc 2>/dev/null || echo "$LINE" >> ~/.zshrc
 
 # vim-airline via Vim's built-in package loading
