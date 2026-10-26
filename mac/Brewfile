@@ -1,9 +1,43 @@
+# Shell and terminal
 brew "starship"
 brew "eza"
-brew "mtr"
 brew "vim"
-brew "htop"
 brew "byobu"
-brew "kubernetes-cli"
-cask "font-jetbrains-mono-nerd-font"
+brew "fzf"
+brew "ripgrep"
+brew "wget"
+brew "mtr"
+brew "htop"
 cask "iterm2"
+cask "font-jetbrains-mono-nerd-font"
+
+# Development and cloud
+brew "gh"
+brew "node"
+brew "pipx"
+brew "awscli"
+brew "kubernetes-cli"
+brew "kubectx"  # kubectx and kubens: switch kube context and namespace
+brew "k9s"
+
+# Backup, sync and downloads
+brew "rclone"
+brew "restic"
+brew "yt-dlp"
+
+# Apps. brew bundle adopts a copy already in /Applications. Tailscale and Zoom
+# install from a .pkg, so they reinstall over an existing copy and ask for your password.
+cask "1password"
+cask "firefox"
+cask "google-chrome"
+cask "brave-browser"
+cask "obsidian"
+cask "signal"
+cask "spotify"
+cask "tailscale-app"
+cask "zoom"
+
+# Mac App Store apps (needs mas and an App Store sign-in)
+brew "mas"
+mas "Telegram", id: 747648890
+mas "WhatsApp", id: 310633997
