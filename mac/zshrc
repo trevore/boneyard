@@ -5,7 +5,10 @@
 typeset -U path
 path=(~/bin ~/.local/bin $path)
 
-# Tab completion. Homebrew's completions are already on fpath (brew shellenv in ~/.zprofile)
+# Tab completion. brew shellenv in ~/.zprofile normally puts Homebrew's completions on
+# fpath, but sudo strips FPATH from the environment (even with -E), so add them here too
+typeset -U fpath
+fpath=(${HOMEBREW_PREFIX:-/opt/homebrew}/share/zsh/site-functions $fpath)
 if (( EUID == 0 )); then
   # sudo -s -E keeps HOME: keep root's completion cache out of it, and accept
   # Homebrew's completion dirs even though they're owned by you, not root
