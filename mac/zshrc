@@ -17,6 +17,9 @@ compdef k=kubectl
 # Colorize ls (macOS BSD ls). eza gets its own aliases because its flags
 # differ from ls (e.g. -t takes a value), so ls itself is left alone.
 export CLICOLOR=1
+# Same as the default except directories are bold blue (Ex), which iTerm2 shows as
+# the brighter blue when "Use bright colors for bold text" is on
+export LSCOLORS=Exfxcxdxbxegedabagacad
 if command -v eza >/dev/null; then
   alias ll='eza --icons --git -l --group-directories-first'
   alias tree='eza --icons --tree'
