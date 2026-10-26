@@ -1,4 +1,4 @@
-# Copied to ~/.zshrc.mac and sourced from ~/.zshrc by install.sh
+# install.sh installs this as ~/.zshrc.mac, which ~/.zshrc sources
 
 # -U drops duplicate PATH entries, e.g. after re-sourcing this file. It only applies
 # when assigning through the path array, not the PATH string, so use path=(...)
