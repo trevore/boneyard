@@ -2,7 +2,7 @@
 
 `install.sh` sets up a Mac:
 
-- installs the packages in `Brewfile`: starship, eza, vim, byobu, htop, mtr, kubectl, kubectx, iTerm2 and JetBrains Mono Nerd Font
+- installs the packages in `Brewfile`: starship, eza, vim, byobu, htop, mtr, kubectl, kubectx, fzf, iTerm2 and JetBrains Mono Nerd Font
 - installs the shell config (`zshrc` as `~/.zshrc.mac`, loaded from `~/.zshrc`), `vimrc` with vim-airline, and a starship config
 - adds the "Boneyard" iTerm2 profile and makes it the default when iTerm2 isn't running
 - applies the macOS settings in `defaults.sh` (Dock, Finder, dark mode, scrolling)
