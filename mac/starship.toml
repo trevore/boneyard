@@ -1,4 +1,4 @@
-# Overrides on top of starship's defaults
+# Overrides merged into the nerd-font-symbols preset by install.sh. Tables only (no top-level keys).
 
 [aws]
 format = '[$symbol($profile )(\($region\) )]($style)'

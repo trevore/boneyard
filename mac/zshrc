@@ -1,6 +1,9 @@
 # Copied to ~/.zshrc.mac and sourced from ~/.zshrc by install.sh
 
-export PATH="$HOME/bin:$HOME/.local/bin:$PATH"
+# -U drops duplicate PATH entries, e.g. after re-sourcing this file. It only applies
+# when assigning through the path array, not the PATH string, so use path=(...)
+typeset -U path
+path=(~/bin ~/.local/bin $path)
 
 # Tab completion. Homebrew's completions are already on fpath (brew shellenv in ~/.zprofile)
 autoload -Uz compinit && compinit
