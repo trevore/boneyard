@@ -6,7 +6,13 @@ typeset -U path
 path=(~/bin ~/.local/bin $path)
 
 # Tab completion. Homebrew's completions are already on fpath (brew shellenv in ~/.zprofile)
-autoload -Uz compinit && compinit
+if (( EUID == 0 )); then
+  # sudo -s -E keeps HOME: keep root's completion cache out of it, and accept
+  # Homebrew's completion dirs even though they're owned by you, not root
+  autoload -Uz compinit && compinit -u -d /var/root/.zcompdump
+else
+  autoload -Uz compinit && compinit
+fi
 
 # Prompt
 command -v starship >/dev/null && eval "$(starship init zsh)"
@@ -27,6 +33,7 @@ fi
 
 # History: keep a lot, write each command immediately, not shared live across tabs
 HISTFILE=~/.zsh_history
+(( EUID == 0 )) && HISTFILE=/var/root/.zsh_history  # same reason as compinit above
 HISTSIZE=100000
 SAVEHIST=100000
 setopt INC_APPEND_HISTORY
