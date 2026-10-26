@@ -1,8 +1,9 @@
 #!/bin/bash
 # macOS settings. Safe to re-run. install.sh runs this.
+# Nothing is restarted, so the settings take effect after logging out and back in.
 set -euo pipefail
 
-# Appearance and input. Dark mode and scroll direction apply after logging out and back in.
+# Appearance and input
 defaults write NSGlobalDomain AppleInterfaceStyle -string Dark
 defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false  # natural scrolling off
@@ -21,6 +22,3 @@ defaults write com.apple.finder ShowStatusBar -bool true
 defaults write com.apple.finder FXPreferredViewStyle -string Nlsv
 defaults write com.apple.finder NewWindowTarget -string PfHm
 defaults write com.apple.finder NewWindowTargetPath -string "file://$HOME/"
-
-# Restart them so the Dock and Finder settings take effect now
-killall Dock Finder 2>/dev/null || true

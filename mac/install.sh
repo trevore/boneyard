@@ -117,5 +117,5 @@ cat <<'EOF'
 Done. Manual steps:
   1. iTerm2 -> Settings -> Profiles -> select "Boneyard" -> Other Actions -> Set as Default
   2. Open a new terminal tab (or: source ~/.zshrc)
-  3. Log out and back in for dark mode and scroll direction
+  3. Log out and back in for the macOS settings (Dock, Finder, dark mode, scrolling)
 EOF
