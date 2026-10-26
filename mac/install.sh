@@ -1,6 +1,7 @@
 #!/bin/bash
 # Set up this Mac: packages, shell config, starship, vim.
-# Safe to re-run. Differing existing files are moved aside (*.bak.<time>) first.
+# Safe to re-run. A differing existing file is moved aside (*.bak.<time>) first,
+# except the files this script generates itself (see MARKER below).
 set -euo pipefail
 
 DIR="$(cd "$(dirname "$0")" && pwd)"
@@ -71,6 +72,14 @@ trap 'rm -f "$TMP"' EXIT
     END { for (t in keys) printf "\n%s\n%s", t, keys[t] }
   ' "$DIR/starship.toml" -
 } > "$TMP"
+# starship exits 0 even on a broken config, but reports problems on stderr
+ERRS="$(STARSHIP_CONFIG="$TMP" starship print-config 2>&1 >/dev/null)"
+if [ -n "$ERRS" ]; then
+  echo "Generated starship config has errors, so it wasn't installed." >&2
+  echo "Check mac/starship.toml and ~/.config/starship.local.toml (rules: comments in mac/install.sh)." >&2
+  echo "$ERRS" >&2
+  exit 1
+fi
 install_file "$TMP" ~/.config/starship.toml
 
 {
