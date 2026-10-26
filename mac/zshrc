@@ -1,0 +1,21 @@
+# Sourced from ~/.zshrc by install.sh
+
+# Prompt
+command -v starship >/dev/null && eval "$(starship init zsh)"
+
+# Colorize ls (macOS BSD ls), and use eza when available
+export CLICOLOR=1
+if command -v eza >/dev/null; then
+  alias ls='eza --icons --group-directories-first'
+  alias ll='eza --icons --git -l --group-directories-first'
+  alias tree='eza --icons --tree'
+fi
+
+# History: keep a lot, write each command immediately, not shared live across tabs
+HISTFILE=~/.zsh_history
+HISTSIZE=100000
+SAVEHIST=100000
+setopt INC_APPEND_HISTORY
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_SPACE
+setopt EXTENDED_HISTORY

@@ -1,0 +1,17 @@
+" Having a vimrc disables Vim's built-in defaults; load them back
+source $VIMRUNTIME/defaults.vim
+
+" Keep backup and swap files out of the working directory.
+" Trailing // makes Vim encode the full path so same-named files don't collide.
+" (install.sh creates these directories)
+set backup
+set backupdir=~/.vim/backup//
+set directory=~/.vim/tmp//
+
+" Always show the statusline so airline is visible with a single window
+set laststatus=2
+set noshowmode
+
+" vim-airline: use powerline glyphs (requires a Nerd Font in the terminal)
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
