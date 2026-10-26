@@ -1,5 +1,9 @@
 " Having a vimrc disables Vim's built-in defaults; load them back
+unlet! skip_defaults_vim
 source $VIMRUNTIME/defaults.vim
+
+" defaults.vim turns the mouse on, which breaks normal terminal copy/paste
+set mouse=
 
 " Keep backup and swap files out of the working directory.
 " Trailing // makes Vim encode the full path so same-named files don't collide.

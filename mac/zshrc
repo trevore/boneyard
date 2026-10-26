@@ -3,10 +3,10 @@
 # Prompt
 command -v starship >/dev/null && eval "$(starship init zsh)"
 
-# Colorize ls (macOS BSD ls), and use eza when available
+# Colorize ls (macOS BSD ls). eza gets its own aliases because its flags
+# differ from ls (e.g. -t takes a value), so ls itself is left alone.
 export CLICOLOR=1
 if command -v eza >/dev/null; then
-  alias ls='eza --icons --group-directories-first'
   alias ll='eza --icons --git -l --group-directories-first'
   alias tree='eza --icons --tree'
 fi
