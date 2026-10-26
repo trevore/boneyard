@@ -99,6 +99,22 @@ mkdir -p "$ITERM_PROFILES"
 cp "$DIR/iterm2-profile.json" "$ITERM_PROFILES/boneyard.json"
 echo "installed $ITERM_PROFILES/boneyard.json"
 
+# Make it the default profile. iTerm2 keeps its settings in memory and saves them when it
+# quits, so only write this while it isn't running (e.g. on a fresh Mac, run from Terminal).
+# ps rather than pgrep: pgrep can miss it. Match any *.app folder, since a copy may not
+# be named iTerm.app (e.g. iTerm2.app). A here-string rather than a pipe, so grep -q
+# exiting early can't make pipefail report "not running" while it is.
+ITERM_GUID="$(plutil -extract Profiles.0.Guid raw "$DIR/iterm2-profile.json")"
+ITERM_STEP=""
+if [ "$(defaults read com.googlecode.iterm2 'Default Bookmark Guid' 2>/dev/null)" = "$ITERM_GUID" ]; then
+  :  # already the default
+elif grep -q '\.app/Contents/MacOS/iTerm2$' <<< "$(ps -ax -o comm=)"; then
+  ITERM_STEP='iTerm2 -> Settings -> Profiles -> select "Boneyard" -> Other Actions -> Set as Default'
+else
+  defaults write com.googlecode.iterm2 "Default Bookmark Guid" -string "$ITERM_GUID"
+  echo "set Boneyard as the default iTerm2 profile"
+fi
+
 "$DIR/defaults.sh"
 
 # Load ~/.zshrc.mac from ~/.zshrc
@@ -112,10 +128,10 @@ else
   git clone --depth 1 https://github.com/vim-airline/vim-airline "$AIRLINE"
 fi
 
+echo
+echo "Done. Manual steps:"
+if [ -n "$ITERM_STEP" ]; then echo "  - $ITERM_STEP"; fi
 cat <<'EOF'
-
-Done. Manual steps:
-  1. iTerm2 -> Settings -> Profiles -> select "Boneyard" -> Other Actions -> Set as Default
-  2. Open a new terminal tab (or: source ~/.zshrc)
-  3. Log out and back in for the macOS settings (Dock, Finder, dark mode, scrolling)
+  - Open a new terminal tab (or: source ~/.zshrc)
+  - Log out and back in for the macOS settings (Dock, Finder, dark mode, scrolling)
 EOF
