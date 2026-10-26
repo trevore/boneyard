@@ -3,6 +3,8 @@
 # Prompt
 command -v starship >/dev/null && eval "$(starship init zsh)"
 
+alias k=kubectl
+
 # Colorize ls (macOS BSD ls). eza gets its own aliases because its flags
 # differ from ls (e.g. -t takes a value), so ls itself is left alone.
 export CLICOLOR=1

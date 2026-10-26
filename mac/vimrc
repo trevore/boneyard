@@ -19,3 +19,6 @@ set noshowmode
 " vim-airline: use powerline glyphs (requires a Nerd Font in the terminal)
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
+
+" Machine-local settings, not kept in the repo
+silent! source ~/.vimrc.local
