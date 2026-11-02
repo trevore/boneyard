@@ -9,6 +9,11 @@ format = '[$symbol($profile )(\($region\) )]($style)'
 truncation_length = 0
 truncate_to_repo = false
 
+# Only show the gcloud account while opted in via this env var (the gon/goff
+# aliases in zshrc); otherwise the work account sits in every prompt.
+[gcloud]
+detect_env_vars = ["CLOUDSDK_ACTIVE_CONFIG_NAME"]
+
 [kubernetes]
 disabled = false
 format = '[$symbol$context( \($namespace\))]($style) '

@@ -25,6 +25,11 @@ alias k=kubectl
 alias kns=kubens  # old name for the namespace switcher
 (( $+functions[_kubens] )) && compdef kns=kubens
 
+# gcloud: the prompt only shows the active account while this is set (starship's
+# [gcloud] detect_env_vars). It also tells gcloud which named config to use.
+alias gon='export CLOUDSDK_ACTIVE_CONFIG_NAME=default'
+alias goff='unset CLOUDSDK_ACTIVE_CONFIG_NAME'
+
 # Colorize ls (macOS BSD ls). eza gets its own aliases because its flags
 # differ from ls (e.g. -t takes a value), so ls itself is left alone.
 export CLICOLOR=1
